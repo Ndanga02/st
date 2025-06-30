@@ -6,7 +6,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>   
-<div class="cursor"></div>
+<div class="loading" id="loading">
+        <div class="loading-text">INITIALIZING SEMTEX SYSTEMS...</div>
+    </div>
+
+    <div class="cursor"></div>
     <canvas id="matrix-canvas"></canvas>
     
     <div class="scroll-indicator">
@@ -15,19 +19,32 @@
 
     <nav class="nav">
         <div class="nav-container">
-            <div class="logo">SEMTEX technologies</div>
+            <div class="logo">SEMTEX</div>
             <ul class="nav-links">
                 <li><a href="#home">INIT</a></li>
                 <li><a href="#services">MODULES</a></li>
+                <li><a href="#about">INTEL</a></li>
                 <li><a href="#stats">METRICS</a></li>
                 <li><a href="#contact">CONNECT</a></li>
             </ul>
+            <div class="mobile-menu-toggle" id="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#home">INIT</a>
+            <a href="#services">MODULES</a>
+            <a href="#about">INTEL</a>
+            <a href="#stats">METRICS</a>
+            <a href="#contact">CONNECT</a>
         </div>
     </nav>
 
     <section class="hero" id="home">
         <div class="hero-content">
-            
+            <h1 class="hero-title">SEMTEX</h1>
             <p class="hero-subtitle">NEURAL AUTOMATION SYSTEMS</p>
             <div class="terminal-text">
                 <span id="typed-text"></span><span class="terminal-cursor"></span>
@@ -66,6 +83,58 @@
                         real-time synchronization across global networks.
                     </p>
                 </div>
+                <div class="service-card">
+                    <div class="service-number">04</div>
+                    <h3 class="service-title">QUANTUM SECURITY PROTOCOLS</h3>
+                    <p class="service-description">
+                        Military-grade encryption and quantum-resistant security implementations. 
+                        Zero-trust architecture with advanced threat detection, real-time monitoring, 
+                        and autonomous incident response capabilities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>CLASSIFIED INTELLIGENCE</h2>
+                <p>
+                    SEMTEX Technologies operates at the intersection of artificial intelligence and enterprise automation. 
+                    Our neural networks process over 2.4 petabytes of data daily, enabling predictive decision-making 
+                    and autonomous system optimization.
+                </p>
+                <!-- <p>
+                    Founded by a consortium of former DARPA researchers and Silicon Valley veterans, we specialize 
+                    in deploying mission-critical AI systems for Fortune 500 companies and government agencies.
+                </p> -->
+                <p>
+                    Our proprietary algorithms have been battle-tested in high-stakes environments, delivering 
+                    99.97% uptime across distributed global networks while maintaining zero-breach security standards.
+                </p>
+            </div>
+            <div class="about-visual">
+                <div class="code-snippet">
+                    <div>// NEURAL NETWORK INITIALIZATION</div>
+                    <div>class AutonomousAgent {</div>
+                    <div>&nbsp;&nbsp;constructor(config) {</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;this.neuralNet = new DeepNetwork(config);</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;this.decisionEngine = new QuantumProcessor();</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;this.securityLayer = new EncryptionModule();</div>
+                    <div>&nbsp;&nbsp;}</div>
+                    <div></div>
+                    <div>&nbsp;&nbsp;async process(data) {</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;const analysis = await this.neuralNet.analyze(data);</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;const decision = this.decisionEngine.compute(analysis);</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;return this.securityLayer.encrypt(decision);</div>
+                    <div>&nbsp;&nbsp;}</div>
+                    <div>}</div>
+                    <div></div>
+                    <div>// SYSTEM STATUS: OPERATIONAL</div>
+                    <div>// THREAT LEVEL: MINIMAL</div>
+                    <div>// EFFICIENCY: 99.97%</div>
+                </div>
             </div>
         </div>
     </section>
@@ -73,7 +142,7 @@
     <section class="stats" id="stats">
         <div class="stats-grid">
             <div class="stat-item">
-                <div class="stat-number" data-target="99.9">0</div>
+                <div class="stat-number" data-target="99.97">0</div>
                 <div class="stat-label">UPTIME %</div>
             </div>
             <div class="stat-item">
@@ -91,12 +160,81 @@
         </div>
     </section>
 
-    <footer class="footer" id="contact">
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-form">
+                <h3>INITIATE CONTACT PROTOCOL</h3>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">IDENTIFICATION</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">COMMUNICATION CHANNEL</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">ORGANIZATION</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="project">PROJECT CLASSIFICATION</label>
+                        <select id="project" name="project" style="width: 100%; padding: 15px; background: var(--tech-gray); border: 1px solid var(--border-gray); color: var(--primary-white); font-family: var(--mono-font); font-size: 14px;">
+                            <option value="">SELECT PROTOCOL</option>
+                            <option value="ai-integration">AI NEURAL INTEGRATION</option>
+                            <option value="process-automation">AUTONOMOUS PROCESS CONTROL</option>
+                            <option value="saas-architecture">DISTRIBUTED SAAS ARCHITECTURE</option>
+                            <option value="security-protocols">QUANTUM SECURITY PROTOCOLS</option>
+                            <option value="custom">CUSTOM SOLUTION</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">MISSION BRIEFING</label>
+                        <textarea id="message" name="message" placeholder="Describe your operational requirements, current system architecture, and strategic objectives..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">TRANSMIT DATA</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3>SECURE CHANNELS</h3>
+                <p>
+                    All communications are encrypted using military-grade protocols. 
+                    Our response time averages 4.7 minutes during operational hours. 
+                    For immediate assistance, utilize priority channels below.
+                </p>
+                <div class="contact-details">
+                    <div>
+                        <strong>NEURAL LINK:</strong><br>
+                        contact@semtex.tech
+                    </div>
+                    <!-- <div>
+                        <strong>VOICE PROTOCOL:</strong><br>
+                        +1 (555) SEMTEX-1
+                    </div>
+                    <div>
+                        <strong>EMERGENCY FREQUENCY:</strong><br>
+                        +1 (555) NEURAL-911
+                    </div> -->
+                    <!-- <div>
+                        <strong>HEADQUARTERS:</strong><br>
+                        2501 Neural Ave, Suite 2025<br>
+                        Quantum City, QC 90210
+                    </div> -->
+                    <div>
+                        <strong>OPERATIONAL STATUS:</strong><br>
+                        24/7/365 GLOBAL COVERAGE
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>NETWORK ACCESS</h4>
                 <p>contact@semtex.tech</p>
-                <p>+2710SEMTEX</p>
+                <p>011-1SE-MTEX</p>
                 <p>ENCRYPTED CHANNELS ONLY</p>
             </div>
             <div class="footer-section">
@@ -104,7 +242,7 @@
                 <a href="#services">NEURAL INTEGRATION</a>
                 <a href="#services">PROCESS AUTOMATION</a>
                 <a href="#services">SAAS ARCHITECTURE</a>
-                <a href="#services">SYSTEM CONSULTING</a>
+                <a href="#services">SECURITY PROTOCOLS</a>
             </div>
             <div class="footer-section">
                 <h4>ENTERPRISE</h4>
@@ -124,6 +262,7 @@
         <div class="footer-bottom">
             <p>© 2025 SEMTEX TECHNOLOGIES :: ALL NEURAL NETWORKS RESERVED :: CLASSIFIED LEVEL OMEGA</p>
         </div>
+    </footer>
  <script src="script.js"></script>
 </body>
 </html>
