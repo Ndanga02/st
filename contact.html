@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | SEMTEX Technologies</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-black);
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .contact-hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 40px;
+        }
+
+        .contact-hero h1 {
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-family: var(--mono-font);
+            color: var(--primary-white);
+        }
+
+        .contact-hero p {
+            font-size: 18px;
+            color: var(--accent-gray);
+            line-height: 1.6;
+            letter-spacing: 1px;
+        }
+
+        .contact-main {
+            padding: 100px 0;
+            background: var(--tech-gray);
+        }
+
+        .contact-main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-form-section {
+            background: var(--primary-black);
+            padding: 60px 40px;
+            border: 1px solid var(--border-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-green), transparent);
+            animation: pulse-line 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-line {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .contact-form-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-white);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent-gray);
+            font-family: var(--mono-font);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: var(--tech-gray);
+            border: 1px solid var(--border-gray);
+            color: var(--primary-white);
+            font-family: var(--mono-font);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .urgency-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .urgency-option {
+            padding: 15px;
+            background: var(--tech-gray);
+            border: 1px solid var(--border-gray);
+            color: var(--accent-gray);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .urgency-option.selected,
+        .urgency-option:hover {
+            background: var(--accent-green);
+            color: var(--primary-black);
+            border-color: var(--accent-green);
+        }
+
+        .urgency-option.high.selected {
+            background: #ff0041;
+            border-color: #ff0041;
+            color: var(--primary-white);
+        }
+
+        .submit-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .submit-btn {
+            padding: 20px 60px;
+            background: transparent;
+            color: var(--primary-white);
+            border: 2px solid var(--primary-white);
+            font-family: var(--mono-font);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-white);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .submit-btn:hover::before {
+            left: 0;
+        }
+
+        .submit-btn:hover {
+            color: var(--primary-black);
+        }
+
+        .contact-info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .contact-info-card {
+            background: var(--primary-black);
+            padding: 40px;
+            border: 1px solid var(--border-gray);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+        }
+
+        .contact-info-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-green);
+        }
+
+        .contact-detail-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--tech-gray);
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .contact-detail-item strong {
+            display: block;
+            color: var(--primary-white);
+            font-size: 14px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-detail-item span {
+            color: var(--accent-gray);
+            font-family: var(--mono-font);
+            font-size: 14px;
+        }
+
+        .response-time {
+            background: var(--dark-gray);
+            padding: 30px;
+            border: 1px solid var(--border-gray);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .response-time h4 {
+            color: var(--accent-green);
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .response-time .time {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--primary-white);
+            font-family: var(--mono-font);
+        }
+
+        .response-time .label {
+            font-size: 12px;
+            color: var(--accent-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .office-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-10px);
+        }
+
+        .office-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--accent-green);
+        }
+
+        .office-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: var(--primary-white);
+        }
+
+        .office-status {
+            font-size: 12px;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .office-details {
+            text-align: left;
+            font-size: 14px;
+            color: var(--accent-gray);
+            line-height: 1.6;
+        }
+
+        .security-notice {
+            padding: 60px 0;
+            background: var(--primary-black);
+            border-top: 1px solid var(--border-gray);
+            text-align: center;
+        }
+
+        .security-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .security-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-green);
+        }
+
+        .security-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--accent-gray);
+            margin-bottom: 30px;
+        }
+
+        .encryption-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--tech-gray);
+            padding: 15px 30px;
+            border: 1px solid var(--border-gray);
+            color: var(--accent-green);
+            font-family: var(--mono-font);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .encryption-indicator {
+            width: 12px;
+            height: 12px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @media (max-width: 768px) {
+            .contact-main-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .urgency-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .office-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        -locations {
+            padding: 100px 0;
+            background: var(--dark-gray);
+            border-top: 1px solid var(--border-gray);
+        }
+
+        .office-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .office-title {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 80px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-white);
+        }
+
+        .office-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .office-card {
+            background: var(--primary-black);
+            padding: 40px;
+            border: 1px solid var(--border-gray);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="loading-text">ESTABLISHING SECURE CONNECTION...</div>
+    </div>
+
+    <div class="cursor"></div>
+    <canvas id="matrix-canvas"></canvas>
+    
+    <div class="scroll-indicator">
+        <div class="scroll-progress"></div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">SEMTEX</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">INIT</a></li>
+                <li><a href="services.html">MODULES</a></li>
+                <li><a href="about.html">INTEL</a></li>
+                <li><a href="case-studies.html">CASES</a></li>
+                <li><a href="contact.html">CONNECT</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">INIT</a>
+            <a href="services.html">MODULES</a>
+            <a href="about.html">INTEL</a>
+            <a href="case-studies.html">CASES</a>
+            <a href="contact.html">CONNECT</a>
+        </div>
+    </nav>
+
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <h1>INITIATE CONTACT PROTOCOL</h1>
+            <p>Establish secure communication channels with our neural network specialists. All transmissions are encrypted using military-grade quantum protocols with real-time threat monitoring.</p>
+        </div>
+    </section>
+
+    <section class="contact-main">
+        <div class="contact-main-container">
+            <div class="contact-form-section">
+                <h2>SECURE TRANSMISSION FORM</h2>
+                <form id="enhanced-contact-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="firstName">FIRST NAME</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">LAST NAME</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="email">COMMUNICATION CHANNEL</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">VOICE PROTOCOL (OPTIONAL)</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="company">ORGANIZATION</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">DESIGNATION</label>
+                            <input type="text" id="position" name="position">
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="projectType">PROJECT CLASSIFICATION</label>
+                        <select id="projectType" name="projectType" required>
+                            <option value="">SELECT PROTOCOL</option>
+                            <option value="ai-integration">AI NEURAL INTEGRATION</option>
+                            <option value="process-automation">AUTONOMOUS PROCESS CONTROL</option>
+                            <option value="saas-architecture">DISTRIBUTED SAAS ARCHITECTURE</option>
+                            <option value="security-protocols">QUANTUM SECURITY PROTOCOLS</option>
+                            <option value="consultation">STRATEGIC CONSULTATION</option>
+                            <option value="partnership">PARTNERSHIP INQUIRY</option>
+                            <option value="custom">CUSTOM SOLUTION</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="budget">OPERATIONAL BUDGET RANGE</label>
+                        <select id="budget" name="budget">
+                            <option value="">SELECT RANGE</option>
+                            <option value="under-50k">UNDER $50,000</option>
+                            <option value="50k-250k">$50,000 - $250,000</option>
+                            <option value="250k-1m">$250,000 - $1,000,000</option>
+                            <option value="1m-5m">$1,000,000 - $5,000,000</option>
+                            <option value="over-5m">OVER $5,000,000</option>
+                            <option value="classified">CLASSIFIED</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>URGENCY LEVEL</label>
+                        <div class="urgency-selector">
+                            <div class="urgency-option" data-urgency="low">
+                                <div>LOW</div>
+                                <div style="font-size: 10px; margin-top: 5px;">30+ DAYS</div>
+                            </div>
+                            <div class="urgency-option selected" data-urgency="medium">
+                                <div>MEDIUM</div>
+                                <div style="font-size: 10px; margin-top: 5px;">7-30 DAYS</div>
+                            </div>
+                            <div class="urgency-option high" data-urgency="high">
+                                <div>CRITICAL</div>
+                                <div style="font-size: 10px; margin-top: 5px;">IMMEDIATE</div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="urgency" name="urgency" value="medium">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="message">MISSION BRIEFING</label>
+                        <textarea id="message" name="message" placeholder="Describe your operational requirements, current system architecture, strategic objectives, and any specific challenges you're facing. Include technical specifications if applicable..." required></textarea>
+                    </div>
+
+                    <div class="submit-section">
+                        <button type="submit" class="submit-btn">TRANSMIT ENCRYPTED DATA</button>
+                        <div style="margin-top: 20px; font-size: 12px; color: var(--accent-gray);">
+                            All communications secured with 4096-bit quantum encryption
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="contact-info-section">
+                <div class="contact-info-card">
+                    <h3>DIRECT CHANNELS</h3>
+                    <div class="contact-detail-item">
+                        <strong>PRIMARY NEURAL LINK</strong>
+                        <span>contact@semtex.tech</span>
+                    </div>
+                    <div class="contact-detail-item">
+                        <strong>EMERGENCY FREQUENCY</strong>
+                        <span>urgent@semtex.tech</span>
+                    </div>
+                    <div class="contact-detail-item">
+                        <strong>PARTNERSHIP PROTOCOL</strong>
+                        <span>partners@semtex.tech</span>
+                    </div>
+                    <div class="contact-detail-item">
+                        <strong>MEDIA INQUIRIES</strong>
+                        <span>media@semtex.tech</span>
+                    </div>
+                </div>
+
+                <div class="contact-info-card">
+                    <h3>RESPONSE PROTOCOLS</h3>
+                    <div class="response-time">
+                        <h4>AVERAGE RESPONSE TIME</h4>
+                        <div class="time">4.7</div>
+                        <div class="label">MINUTES</div>
+                    </div>
+                    <div style="margin-top: 20px; font-size: 14px; color: var(--accent-gray); line-height: 1.6;">
+                        Critical inquiries receive immediate attention. Standard requests processed within 4.7 minutes during operational hours (24/7/365 global coverage).
+                    </div>
+                </div>
+
+                <div class="contact-info-card">
+                    <h3>OPERATIONAL STATUS</h3>
+                    <div class="contact-detail-item">
+                        <strong>SYSTEM STATUS</strong>
+                        <span style="color: var(--accent-green);">FULLY OPERATIONAL</span>
+                    </div>
+                    <div class="contact-detail-item">
+                        <strong>SECURITY LEVEL</strong>
+                        <span style="color: var(--accent-green);">QUANTUM ENCRYPTED</span>
+                    </div>
+                    <div class="contact-detail-item">
+                        <strong>AVAILABILITY</strong>
+                        <span>24/7/365 GLOBAL COVERAGE</span>
+                    </div>
+                    <div class="contact-detail-item">
+                        <strong>RESPONSE GUARANTEE</strong>
+                        <span>4.7 MINUTE AVERAGE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="office-locations">
+        <div class="office-container">
+            <h2 class="office-title">GLOBAL OPERATIONS CENTERS</h2>
+            <div class="office-grid">
+                <div class="office-card">
+                    <div class="office-icon">🏢</div>
+                    <div class="office-name">HEADQUARTERS</div>
+                    <div class="office-status">PRIMARY NODE</div>
+                    <div class="office-details">
+                        <p><strong>Location:</strong> Quantum City, QC</p>
+                        <p><strong>Coordinates:</strong> [CLASSIFIED]</p>
+                        <p><strong>Operational Hours:</strong> 24/7/365</p>
+                        <p><strong>Staff:</strong> 247 Neural Specialists</p>
+                        <p><strong>Security Level:</strong> OMEGA</p>
+                    </div>
+                </div>
+
+                <div class="office-card">
+                    <div class="office-icon">🌍</div>
+                    <div class="office-name">EMEA HUB</div>
+                    <div class="office-status">SECONDARY NODE</div>
+                    <div class="office-details">
+                        <p><strong>Location:</strong> London, UK</p>
+                        <p><strong>Coverage:</strong> Europe, Middle East, Africa</p>
+                        <p><strong>Operational Hours:</strong> 24/7/365</p>
+                        <p><strong>Staff:</strong> 183 Specialists</p>
+                        <p><strong>Languages:</strong> 47 Supported</p>
+                    </div>
+                </div>
+
+                <div class="office-card">
+                    <div class="office-icon">🌏</div>
+                    <div class="office-name">APAC CENTER</div>
+                    <div class="office-status">TERTIARY NODE</div>
+                    <div class="office-details">
+                        <p><strong>Location:</strong> Singapore</p>
+                        <p><strong>Coverage:</strong> Asia Pacific Region</p>
+                        <p><strong>Operational Hours:</strong> 24/7/365</p>
+                        <p><strong>Staff:</strong> 156 Specialists</p>
+                        <p><strong>Quantum Links:</strong> 847 Active</p>
+                    </div>
+                </div>
+
+                <div class="office-card">
+                    <div class="office-icon">🚀</div>
+                    <div class="office-name">R&D FACILITY</div>
+                    <div class="office-status">RESEARCH NODE</div>
+                    <div class="office-details">
+                        <p><strong>Location:</strong> [CLASSIFIED]</p>
+                        <p><strong>Focus:</strong> Neural Network Development</p>
+                        <p><strong>Clearance:</strong> RESTRICTED ACCESS</p>
+                        <p><strong>Projects:</strong> 12 ACTIVE</p>
+                        <p><strong>Security:</strong> QUANTUM VAULT</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="security-notice">
+        <div class="security-container">
+            <h2 class="security-title">SECURITY PROTOCOLS</h2>
+            <div class="security-content">
+                All communications are protected by military-grade quantum encryption. Your data is transmitted through secure quantum channels and stored in encrypted neural vaults. We maintain zero-breach security standards with continuous threat monitoring and autonomous incident response protocols.
+            </div>
+            <div class="encryption-status">
+                <div class="encryption-indicator"></div>
+                QUANTUM ENCRYPTION ACTIVE
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>NETWORK ACCESS</h4>
+                <p>contact@semtex.tech</p>
+                <p>011-1SE-MTEX</p>
+                <p>ENCRYPTED CHANNELS ONLY</p>
+            </div>
+            <div class="footer-section">
+                <h4>CORE SERVICES</h4>
+                <a href="services.html">NEURAL INTEGRATION</a>
+                <a href="services.html">PROCESS AUTOMATION</a>
+                <a href="services.html">SAAS ARCHITECTURE</a>
+                <a href="services.html">SECURITY PROTOCOLS</a>
+            </div>
+            <div class="footer-section">
+                <h4>ENTERPRISE</h4>
+                <a href="about.html">CORPORATE OVERVIEW</a>
+                <a href="case-studies.html">CASE STUDIES</a>
+                <a href="contact.html">TALENT ACQUISITION</a>
+                <a href="contact.html">PARTNERSHIP PROTOCOLS</a>
+            </div>
+            <div class="footer-section">
+                <h4>DOCUMENTATION</h4>
+                <a href="contact.html">API REFERENCE</a>
+                <a href="contact.html">TECHNICAL SPECS</a>
+                <a href="contact.html">SECURITY COMPLIANCE</a>
+                <a href="contact.html">SYSTEM STATUS</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 SEMTEX TECHNOLOGIES :: ALL NEURAL NETWORKS RESERVED :: CLASSIFIED LEVEL OMEGA</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Enhanced Contact Form Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Urgency selector
+            const urgencyOptions = document.querySelectorAll('.urgency-option');
+            const urgencyInput = document.getElementById('urgency');
+
+            urgencyOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    urgencyOptions.forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+                    urgencyInput.value = option.dataset.urgency;
+                });
+            });
+
+            // Enhanced form submission
+            const form = document.getElementById('enhanced-contact-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const submitBtn = form.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                
+                // Simulate encryption process
+                submitBtn.textContent = 'ENCRYPTING DATA...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.textContent = 'TRANSMITTING...';
+                    setTimeout(() => {
+                        submitBtn.textContent = 'QUANTUM TUNNELING...';
+                        setTimeout(() => {
+                            submitBtn.textContent = 'TRANSMISSION COMPLETE';
+                            setTimeout(() => {
+                                submitBtn.textContent = originalText;
+                                submitBtn.disabled = false;
+                                form.reset();
+                                
+                                // Reset urgency selector
+                                urgencyOptions.forEach(opt => opt.classList.remove('selected'));
+                                urgencyOptions[1].classList.add('selected'); // Medium as default
+                                urgencyInput.value = 'medium';
+                                
+                                // Show success message
+                                alert('Secure transmission successful. Expect encrypted response within 4.7 minutes via your specified communication channels.');
+                            }, 2000);
+                        }, 1000);
+                    }, 1500);
+                }, 1000);
+            });
+
+            // Real-time form validation
+            const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+            inputs.forEach(input => {
+                input.addEventListener('blur', () => {
+                    if (input.value.trim() === '') {
+                        input.style.borderColor = '#ff0041';
+                    } else {
+                        input.style.borderColor = '--accent-green';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

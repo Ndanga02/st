@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | SEMTEX Technologies</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .services-hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-black);
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .services-hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 40px;
+        }
+
+        .services-hero h1 {
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-family: var(--mono-font);
+            color: var(--primary-white);
+        }
+
+        .services-hero p {
+            font-size: 18px;
+            color: var(--accent-gray);
+            line-height: 1.6;
+            letter-spacing: 1px;
+        }
+
+        .detailed-services {
+            padding: 100px 0;
+            background: var(--tech-gray);
+        }
+
+        .service-detail {
+            max-width: 1400px;
+            margin: 0 auto 100px;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .service-detail:nth-child(even) {
+            grid-template-columns: 2fr 1fr;
+        }
+
+        .service-detail:nth-child(even) .service-info {
+            order: 2;
+        }
+
+        .service-detail:nth-child(even) .service-visual {
+            order: 1;
+        }
+
+        .service-info h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-white);
+        }
+
+        .service-info .service-number {
+            font-size: 16px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .service-info p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--accent-gray);
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .service-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-gray);
+            color: var(--primary-white);
+            font-family: var(--mono-font);
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .service-features li::before {
+            content: '▶ ';
+            color: var(--accent-green);
+            margin-right: 10px;
+        }
+
+        .service-visual {
+            background: var(--primary-black);
+            padding: 40px;
+            border: 1px solid var(--border-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-green);
+            animation: scan 2s ease-in-out infinite;
+        }
+
+        @keyframes scan {
+            0%, 100% { transform: scaleX(0); }
+            50% { transform: scaleX(1); }
+        }
+
+        .service-diagram {
+            font-family: var(--mono-font);
+            font-size: 12px;
+            color: var(--accent-green);
+            line-height: 1.8;
+        }
+
+        .pricing-section {
+            padding: 100px 0;
+            background: var(--dark-gray);
+            border-top: 1px solid var(--border-gray);
+        }
+
+        .pricing-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            text-align: center;
+        }
+
+        .pricing-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: var(--primary-black);
+            border: 1px solid var(--border-gray);
+            padding: 60px 40px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-green);
+            transform: scale(1.05);
+        }
+
+        .pricing-tier {
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: var(--primary-white);
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 900;
+            font-family: var(--mono-font);
+            color: var(--accent-green);
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            color: var(--accent-gray);
+            font-size: 14px;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .pricing-features li::before {
+            content: '✓ ';
+            color: var(--accent-green);
+            margin-right: 10px;
+        }
+
+        .pricing-cta {
+            margin-top: 40px;
+            padding: 15px 30px;
+            background: transparent;
+            color: var(--primary-white);
+            border: 2px solid var(--primary-white);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .pricing-cta:hover {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        .featured .pricing-cta {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .featured .pricing-cta:hover {
+            background: var(--accent-green);
+            color: var(--primary-black);
+        }
+
+        @media (max-width: 768px) {
+            .service-detail {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .service-detail:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-detail:nth-child(even) .service-info,
+            .service-detail:nth-child(even) .service-visual {
+                order: initial;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="loading-text">LOADING SERVICE PROTOCOLS...</div>
+    </div>
+
+    <div class="cursor"></div>
+    <canvas id="matrix-canvas"></canvas>
+    
+    <div class="scroll-indicator">
+        <div class="scroll-progress"></div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">SEMTEX</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">INIT</a></li>
+                <li><a href="services.html">MODULES</a></li>
+                <li><a href="about.html">INTEL</a></li>
+                <li><a href="case-studies.html">CASES</a></li>
+                <li><a href="contact.html">CONNECT</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">INIT</a>
+            <a href="services.html">MODULES</a>
+            <a href="about.html">INTEL</a>
+            <a href="case-studies.html">CASES</a>
+            <a href="contact.html">CONNECT</a>
+        </div>
+    </nav>
+
+    <section class="services-hero">
+        <div class="services-hero-content">
+            <h1>SERVICE MODULES</h1>
+            <p>Advanced neural automation systems designed for enterprise-scale operations. Each module integrates seamlessly with existing infrastructure while providing autonomous decision-making capabilities.</p>
+        </div>
+    </section>
+
+    <section class="detailed-services">
+        <div class="service-detail">
+            <div class="service-info">
+                <div class="service-number">MODULE 01</div>
+                <h2>AI NEURAL INTEGRATION</h2>
+                <p>Deploy advanced machine learning algorithms directly into your enterprise infrastructure. Our neural networks adapt and evolve, learning from your data patterns to optimize operations autonomously.</p>
+                <p>The system processes real-time data streams, identifies patterns, and makes predictive decisions without human intervention. Built on quantum-resistant architecture with 99.97% accuracy rates.</p>
+                <ul class="service-features">
+                    <li>Real-time pattern recognition and analysis</li>
+                    <li>Autonomous decision-making protocols</li>
+                    <li>Self-learning and adaptation algorithms</li>
+                    <li>Predictive modeling and forecasting</li>
+                    <li>Seamless API integration</li>
+                    <li>24/7 monitoring and optimization</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <div class="service-diagram">
+// NEURAL NETWORK ARCHITECTURE
+┌─────────────────────────────────┐
+│  INPUT LAYER                    │
+│  ├─ Data Streams                │
+│  ├─ Sensor Networks             │
+│  └─ API Endpoints               │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  PROCESSING LAYERS              │
+│  ├─ Feature Extraction          │
+│  ├─ Pattern Recognition         │
+│  ├─ Decision Trees              │
+│  └─ Optimization Algorithms     │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  OUTPUT LAYER                   │
+│  ├─ Automated Actions           │
+│  ├─ Predictive Insights         │
+│  └─ System Optimizations        │
+└─────────────────────────────────┘
+
+STATUS: OPERATIONAL
+ACCURACY: 99.97%
+PROCESSING: 2.4TB/DAY
+                </div>
+            </div>
+        </div>
+
+        <div class="service-detail">
+            <div class="service-info">
+                <div class="service-number">MODULE 02</div>
+                <h2>AUTONOMOUS PROCESS CONTROL</h2>
+                <p>Eliminate human intervention from repetitive operations with intelligent automation frameworks. Our systems make real-time decisions using advanced heuristics and predictive modeling.</p>
+                <p>Built for mission-critical environments, these protocols ensure 100% uptime while continuously optimizing performance metrics and resource allocation.</p>
+                <ul class="service-features">
+                    <li>Zero-touch automation protocols</li>
+                    <li>Real-time decision engines</li>
+                    <li>Predictive maintenance systems</li>
+                    <li>Resource allocation optimization</li>
+                    <li>Failure prediction and prevention</li>
+                    <li>Performance metric tracking</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <div class="service-diagram">
+// AUTONOMOUS CONTROL MATRIX
+┌─────────────────────────────────┐
+│  MONITORING LAYER               │
+│  ├─ System Health Checks        │
+│  ├─ Performance Metrics         │
+│  └─ Resource Utilization        │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  DECISION ENGINE                │
+│  ├─ Heuristic Analysis          │
+│  ├─ Predictive Models           │
+│  ├─ Risk Assessment             │
+│  └─ Optimization Algorithms     │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  EXECUTION LAYER                │
+│  ├─ Automated Responses         │
+│  ├─ Resource Reallocation       │
+│  └─ System Adjustments          │
+└─────────────────────────────────┘
+
+AUTONOMOUS OPERATIONS: ACTIVE
+INTERVENTION REQUIRED: 0%
+EFFICIENCY GAIN: +347%
+                </div>
+            </div>
+        </div>
+
+        <div class="service-detail">
+            <div class="service-info">
+                <div class="service-number">MODULE 03</div>
+                <h2>DISTRIBUTED SAAS ARCHITECTURE</h2>
+                <p>Scalable cloud-native platforms built on microservices architecture. High-availability systems with automatic failover, load balancing, and real-time synchronization across global networks.</p>
+                <p>Designed for enterprise-scale operations with built-in redundancy, automatic scaling, and quantum-encrypted data transmission protocols.</p>
+                <ul class="service-features">
+                    <li>Microservices architecture</li>
+                    <li>Auto-scaling infrastructure</li>
+                    <li>Global CDN distribution</li>
+                    <li>Real-time data synchronization</li>
+                    <li>Automatic failover systems</li>
+                    <li>99.99% uptime guarantee</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <div class="service-diagram">
+// DISTRIBUTED ARCHITECTURE
+┌─────────────────────────────────┐
+│  GLOBAL EDGE NODES              │
+│  ├─ Americas: 147 nodes         │
+│  ├─ EMEA: 183 nodes             │
+│  ├─ APAC: 156 nodes             │
+│  └─ Oceania: 89 nodes           │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  MICROSERVICES CLUSTER          │
+│  ├─ Authentication Service      │
+│  ├─ Data Processing Service     │
+│  ├─ Analytics Service           │
+│  ├─ Notification Service        │
+│  └─ Storage Service             │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  DATA LAYER                     │
+│  ├─ Primary Database Cluster    │
+│  ├─ Backup & Replication        │
+│  └─ Real-time Sync Protocol     │
+└─────────────────────────────────┘
+
+GLOBAL NODES: 575 ACTIVE
+UPTIME: 99.99%
+LATENCY: <15ms GLOBAL AVG
+                </div>
+            </div>
+        </div>
+
+        <div class="service-detail">
+            <div class="service-info">
+                <div class="service-number">MODULE 04</div>
+                <h2>QUANTUM SECURITY PROTOCOLS</h2>
+                <p>Military-grade encryption and quantum-resistant security implementations. Zero-trust architecture with advanced threat detection, real-time monitoring, and autonomous incident response.</p>
+                <p>Our security framework operates at the quantum level, ensuring data protection against both current and future cryptographic threats.</p>
+                <ul class="service-features">
+                    <li>Quantum-resistant encryption</li>
+                    <li>Zero-trust architecture</li>
+                    <li>Real-time threat detection</li>
+                    <li>Autonomous incident response</li>
+                    <li>Biometric authentication systems</li>
+                    <li>Continuous security auditing</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <div class="service-diagram">
+// QUANTUM SECURITY MATRIX
+┌─────────────────────────────────┐
+│  THREAT DETECTION               │
+│  ├─ Behavioral Analysis         │
+│  ├─ Pattern Recognition         │
+│  ├─ Anomaly Detection           │
+│  └─ Predictive Threat Modeling  │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  QUANTUM ENCRYPTION             │
+│  ├─ 4096-bit RSA Keys           │
+│  ├─ Quantum Key Distribution    │
+│  ├─ End-to-End Encryption       │
+│  └─ Perfect Forward Secrecy     │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  INCIDENT RESPONSE              │
+│  ├─ Automatic Threat Mitigation │
+│  ├─ System Isolation Protocols  │
+│  └─ Recovery Procedures         │
+└─────────────────────────────────┘
+
+THREAT LEVEL: MINIMAL
+SECURITY BREACHES: 0
+QUANTUM ENCRYPTION: ACTIVE
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <h2 class="pricing-title">DEPLOYMENT TIERS</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-tier">BASIC</div>
+                    <div class="pricing-price">$2,500<span style="font-size: 16px;">/MONTH</span></div>
+                    <ul class="pricing-features">
+                        <li>Single module deployment</li>
+                        <li>Basic neural network integration</li>
+                        <li>Standard support (9-5)</li>
+                        <li>Monthly performance reports</li>
+                        <li>Basic security protocols</li>
+                        <li>Up to 100GB data processing</li>
+                    </ul>
+                    <a href="contact.html" class="pricing-cta">Initialize Basic</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-tier">ENTERPRISE</div>
+                    <div class="pricing-price">$7,500<span style="font-size: 16px;">/MONTH</span></div>
+                    <ul class="pricing-features">
+                        <li>Full module suite access</li>
+                        <li>Advanced AI integration</li>
+                        <li>24/7 priority support</li>
+                        <li>Real-time analytics dashboard</li>
+                        <li>Quantum security protocols</li>
+                        <li>Unlimited data processing</li>
+                        <li>Custom integrations</li>
+                        <li>Dedicated account manager</li>
+                    </ul>
+                    <a href="contact.html" class="pricing-cta">Initialize Enterprise</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-tier">CUSTOM</div>
+                    <div class="pricing-price">CONTACT<span style="font-size: 16px;"> US</span></div>
+                    <ul class="pricing-features">
+                        <li>Bespoke solution architecture</li>
+                        <li>Custom neural network design</li>
+                        <li>White-label deployment</li>
+                        <li>On-premise installation</li>
+                        <li>Military-grade security</li>
+                        <li>Unlimited scalability</li>
+                        <li>Dedicated development team</li>
+                        <li>SLA guarantees</li>
+                    </ul>
+                    <a href="contact.html" class="pricing-cta">Request Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>NETWORK ACCESS</h4>
+                <p>contact@semtex.tech</p>
+                <p>011-1SE-MTEX</p>
+                <p>ENCRYPTED CHANNELS ONLY</p>
+            </div>
+            <div class="footer-section">
+                <h4>CORE SERVICES</h4>
+                <a href="services.html">NEURAL INTEGRATION</a>
+                <a href="services.html">PROCESS AUTOMATION</a>
+                <a href="services.html">SAAS ARCHITECTURE</a>
+                <a href="services.html">SECURITY PROTOCOLS</a>
+            </div>
+            <div class="footer-section">
+                <h4>ENTERPRISE</h4>
+                <a href="about.html">CORPORATE OVERVIEW</a>
+                <a href="case-studies.html">CASE STUDIES</a>
+                <a href="contact.html">TALENT ACQUISITION</a>
+                <a href="contact.html">PARTNERSHIP PROTOCOLS</a>
+            </div>
+            <div class="footer-section">
+                <h4>DOCUMENTATION</h4>
+                <a href="contact.html">API REFERENCE</a>
+                <a href="contact.html">TECHNICAL SPECS</a>
+                <a href="contact.html">SECURITY COMPLIANCE</a>
+                <a href="contact.html">SYSTEM STATUS</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 SEMTEX TECHNOLOGIES :: ALL NEURAL NETWORKS RESERVED :: CLASSIFIED LEVEL OMEGA</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

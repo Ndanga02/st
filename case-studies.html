@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies | SEMTEX Technologies</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .case-studies-hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-black);
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .case-studies-hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 40px;
+        }
+
+        .case-studies-hero h1 {
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-family: var(--mono-font);
+            color: var(--primary-white);
+        }
+
+        .case-studies-hero p {
+            font-size: 18px;
+            color: var(--accent-gray);
+            line-height: 1.6;
+            letter-spacing: 1px;
+        }
+
+        .case-study-filters {
+            padding: 40px 0;
+            background: var(--tech-gray);
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .filters-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            background: transparent;
+            color: var(--accent-gray);
+            border: 1px solid var(--border-gray);
+            font-family: var(--mono-font);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent-green);
+            color: var(--primary-black);
+            border-color: var(--accent-green);
+        }
+
+        .case-studies-grid {
+            padding: 100px 0;
+            background: var(--dark-gray);
+        }
+
+        .studies-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .case-study-card {
+            background: var(--primary-black);
+            border: 1px solid var(--border-gray);
+            margin-bottom: 60px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .case-study-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+        }
+
+        .case-study-header {
+            padding: 40px;
+            border-bottom: 1px solid var(--border-gray);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .case-study-info h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: var(--primary-white);
+        }
+
+        .case-study-client {
+            font-size: 16px;
+            color: var(--accent-green);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .case-study-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .case-study-tag {
+            background: var(--tech-gray);
+            color: var(--accent-gray);
+            padding: 5px 12px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--border-gray);
+        }
+
+        .case-study-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .metric-item {
+            padding: 20px;
+            border: 1px solid var(--border-gray);
+        }
+
+        .metric-number {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--accent-green);
+            font-family: var(--mono-font);
+        }
+
+        .metric-label {
+            font-size: 11px;
+            color: var(--accent-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .case-study-content {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .case-study-description h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: var(--primary-white);
+        }
+
+        .case-study-description p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--accent-gray);
+            margin-bottom: 20px;
+        }
+
+        .case-study-challenge,
+        .case-study-solution {
+            margin-bottom: 30px;
+        }
+
+        .case-study-challenge h5,
+        .case-study-solution h5 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--accent-green);
+            text-transform: uppercase;
+        }
+
+        .case-study-visual {
+            background: var(--tech-gray);
+            padding: 30px;
+            border: 1px solid var(--border-gray);
+            position: relative;
+        }
+
+        .case-study-visual h5 {
+            font-size: 14px;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .case-study-diagram {
+            font-family: var(--mono-font);
+            font-size: 11px;
+            color: var(--primary-white);
+            line-height: 1.6;
+            background: var(--primary-black);
+            padding: 20px;
+            border: 1px solid var(--border-gray);
+        }
+
+        .case-study-results {
+            background: var(--tech-gray);
+            padding: 40px;
+            border-top: 1px solid var(--border-gray);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .result-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--primary-black);
+            border: 1px solid var(--border-gray);
+        }
+
+        .result-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--accent-green);
+        }
+
+        .result-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: var(--primary-white);
+        }
+
+        .result-description {
+            font-size: 12px;
+            color: var(--accent-gray);
+            line-height: 1.5;
+        }
+
+        .testimonial-section {
+            padding: 100px 0;
+            background: var(--primary-black);
+            border-top: 1px solid var(--border-gray);
+        }
+
+        .testimonial-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+            text-align: center;
+        }
+
+        .testimonial-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-white);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: var(--tech-gray);
+            padding: 40px;
+            border: 1px solid var(--border-gray);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 80px;
+            color: var(--accent-green);
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--accent-gray);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-white);
+            text-transform: uppercase;
+        }
+
+        .testimonial-company {
+            font-size: 12px;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .case-study-header,
+            .case-study-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .case-study-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .filters-container {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .filter-btn {
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="loading-text">ACCESSING CASE FILES...</div>
+    </div>
+
+    <div class="cursor"></div>
+    <canvas id="matrix-canvas"></canvas>
+    
+    <div class="scroll-indicator">
+        <div class="scroll-progress"></div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">SEMTEX</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">INIT</a></li>
+                <li><a href="services.html">MODULES</a></li>
+                <li><a href="about.html">INTEL</a></li>
+                <li><a href="case-studies.html">CASES</a></li>
+                <li><a href="contact.html">CONNECT</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">INIT</a>
+            <a href="services.html">MODULES</a>
+            <a href="about.html">INTEL</a>
+            <a href="case-studies.html">CASES</a>
+            <a href="contact.html">CONNECT</a>
+        </div>
+    </nav>
+
+    <section class="case-studies-hero">
+        <div class="case-studies-hero-content">
+            <h1>OPERATION CASE FILES</h1>
+            <p>Documented deployments showcasing autonomous AI systems in mission-critical enterprise environments. Each case demonstrates measurable efficiency gains and operational excellence.</p>
+        </div>
+    </section>
+
+    <section class="case-study-filters">
+        <div class="filters-container">
+            <button class="filter-btn active" data-filter="all">ALL OPERATIONS</button>
+            <button class="filter-btn" data-filter="manufacturing">MANUFACTURING</button>
+            <button class="filter-btn" data-filter="financial">FINANCIAL</button>
+            <button class="filter-btn" data-filter="logistics">LOGISTICS</button>
+            <button class="filter-btn" data-filter="healthcare">HEALTHCARE</button>
+            <button class="filter-btn" data-filter="energy">ENERGY</button>
+        </div>
+    </section>
+
+    <section class="case-studies-grid">
+        <div class="studies-container">
+            
+            <!-- Case Study 1 -->
+            <div class="case-study-card" data-category="manufacturing">
+                <div class="case-study-header">
+                    <div class="case-study-info">
+                        <div class="case-study-client">TITAN MANUFACTURING CORP</div>
+                        <h3>AUTONOMOUS PRODUCTION LINE OPTIMIZATION</h3>
+                        <div class="case-study-tags">
+                            <span class="case-study-tag">AI INTEGRATION</span>
+                            <span class="case-study-tag">PROCESS AUTOMATION</span>
+                            <span class="case-study-tag">PREDICTIVE MAINTENANCE</span>
+                        </div>
+                    </div>
+                    <div class="case-study-metrics">
+                        <div class="metric-item">
+                            <div class="metric-number">347%</div>
+                            <div class="metric-label">EFFICIENCY GAIN</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-number">98.7%</div>
+                            <div class="metric-label">DEFECT REDUCTION</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-number">$12.4M</div>
+                            <div class="metric-label">ANNUAL SAVINGS</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-description">
+                        <h4>OPERATION OVERVIEW</h4>
+                        <div class="case-study-challenge">
+                            <h5>CHALLENGE</h5>
+                            <p>Titan Manufacturing's 15 production lines were operating at 67% efficiency due to manual quality control processes, unplanned downtime, and reactive maintenance schedules. Quality defects were costing $18M annually.</p>
+                        </div>
+                        <div class="case-study-solution">
+                            <h5>SOLUTION</h5>
+                            <p>Deployed SEMTEX Neural Integration Module with autonomous decision-making protocols. The system monitors 847 sensor points in real-time, predicts equipment failures 72 hours in advance, and automatically adjusts production parameters.</p>
+                        </div>
+                    </div>
+                    <div class="case-study-visual">
+                        <h5>SYSTEM ARCHITECTURE</h5>
+                        <div class="case-study-diagram">
+┌─────────────────────────────────┐
+│  SENSOR NETWORK (847 NODES)    │
+│  ├─ Temperature Monitors        │
+│  ├─ Vibration Sensors           │
+│  ├─ Quality Cameras             │
+│  └─ Production Metrics          │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  NEURAL PROCESSING ENGINE       │
+│  ├─ Predictive Algorithms       │
+│  ├─ Quality Analysis            │
+│  ├─ Maintenance Scheduling      │
+│  └─ Production Optimization     │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  AUTONOMOUS CONTROL SYSTEM      │
+│  ├─ Equipment Adjustments       │
+│  ├─ Quality Interventions       │
+│  └─ Maintenance Triggers        │
+└─────────────────────────────────┘
+
+STATUS: OPERATIONAL
+UPTIME: 99.97%
+PROCESSING: 847 DATAPOINTS/SEC
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-results">
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-icon">⚡</div>
+                            <div class="result-title">ZERO DOWNTIME</div>
+                            <div class="result-description">Predictive maintenance eliminated unplanned shutdowns</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">🎯</div>
+                            <div class="result-title">QUALITY PERFECTION</div>
+                            <div class="result-description">Autonomous quality control achieved 99.97% accuracy</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">📈</div>
+                            <div class="result-title">PRODUCTION SURGE</div>
+                            <div class="result-description">Output increased by 347% with same workforce</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">💰</div>
+                            <div class="result-title">COST REDUCTION</div>
+                            <div class="result-description">Operational costs reduced by 68%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 2 -->
+            <div class="case-study-card" data-category="financial">
+                <div class="case-study-header">
+                    <div class="case-study-info">
+                        <div class="case-study-client">QUANTUM FINANCIAL SERVICES</div>
+                        <h3>ALGORITHMIC TRADING OPTIMIZATION</h3>
+                        <div class="case-study-tags">
+                            <span class="case-study-tag">NEURAL NETWORKS</span>
+                            <span class="case-study-tag">REAL-TIME PROCESSING</span>
+                            <span class="case-study-tag">RISK MANAGEMENT</span>
+                        </div>
+                    </div>
+                    <div class="case-study-metrics">
+                        <div class="metric-item">
+                            <div class="metric-number">2847%</div>
+                            <div class="metric-label">ROI INCREASE</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-number">0.03ms</div>
+                            <div class="metric-label">LATENCY</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-number">$847M</div>
+                            <div class="metric-label">ASSETS MANAGED</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-description">
+                        <h4>OPERATION OVERVIEW</h4>
+                        <div class="case-study-challenge">
+                            <h5>CHALLENGE</h5>
+                            <p>Quantum Financial's trading algorithms were limited by human decision-making bottlenecks and 15ms latency in market responses. Risk management was reactive rather than predictive.</p>
+                        </div>
+                        <div class="case-study-solution">
+                            <h5>SOLUTION</h5>
+                            <p>Implemented autonomous trading neural networks with quantum-speed processing. The system analyzes 2.4TB of market data per second and executes trades with predictive risk assessment.</p>
+                        </div>
+                    </div>
+                    <div class="case-study-visual">
+                        <h5>TRADING ARCHITECTURE</h5>
+                        <div class="case-study-diagram">
+┌─────────────────────────────────┐
+│  MARKET DATA STREAMS            │
+│  ├─ Real-time Price Feeds       │
+│  ├─ News Sentiment Analysis     │
+│  ├─ Economic Indicators         │
+│  └─ Social Media Monitoring     │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  NEURAL DECISION ENGINE         │
+│  ├─ Pattern Recognition         │
+│  ├─ Risk Calculation            │
+│  ├─ Profit Optimization         │
+│  └─ Market Prediction           │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  AUTONOMOUS EXECUTION           │
+│  ├─ Trade Orders (0.03ms)       │
+│  ├─ Portfolio Balancing         │
+│  └─ Risk Mitigation             │
+└─────────────────────────────────┘
+
+TRADES EXECUTED: 1.2M/DAY
+SUCCESS RATE: 96.7%
+LATENCY: 0.03ms AVERAGE
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-results">
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-icon">🚀</div>
+                            <div class="result-title">QUANTUM SPEED</div>
+                            <div class="result-description">0.03ms execution time beats market by 500x</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">🎯</div>
+                            <div class="result-title">PRECISION TRADING</div>
+                            <div class="result-description">96.7% success rate on autonomous trades</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">📊</div>
+                            <div class="result-title">RISK ELIMINATION</div>
+                            <div class="result-description">Predictive risk management prevents losses</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">💎</div>
+                            <div class="result-title">ROI EXPLOSION</div>
+                            <div class="result-description">2847% return on investment increase</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 3 -->
+            <div class="case-study-card" data-category="logistics">
+                <div class="case-study-header">
+                    <div class="case-study-info">
+                        <div class="case-study-client">GLOBAL LOGISTICS DYNAMICS</div>
+                        <h3>AUTONOMOUS SUPPLY CHAIN ORCHESTRATION</h3>
+                        <div class="case-study-tags">
+                            <span class="case-study-tag">SUPPLY CHAIN</span>
+                            <span class="case-study-tag">ROUTE OPTIMIZATION</span>
+                            <span class="case-study-tag">INVENTORY MANAGEMENT</span>
+                        </div>
+                    </div>
+                    <div class="case-study-metrics">
+                        <div class="metric-item">
+                            <div class="metric-number">89%</div>
+                            <div class="metric-label">COST REDUCTION</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-number">99.2%</div>
+                            <div class="metric-label">ON-TIME DELIVERY</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-number">47</div>
+                            <div class="metric-label">COUNTRIES</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-description">
+                        <h4>OPERATION OVERVIEW</h4>
+                        <div class="case-study-challenge">
+                            <h5>CHALLENGE</h5>
+                            <p>Global Logistics managed 15,000 daily shipments across 47 countries with 73% on-time delivery rate. Manual route planning and inventory management caused $47M in annual inefficiencies.</p>
+                        </div>
+                        <div class="case-study-solution">
+                            <h5>SOLUTION</h5>
+                            <p>Deployed autonomous supply chain orchestration with real-time route optimization, predictive inventory management, and automated vendor coordination across the global network.</p>
+                        </div>
+                    </div>
+                    <div class="case-study-visual">
+                        <h5>LOGISTICS NEURAL NETWORK</h5>
+                        <div class="case-study-diagram">
+┌─────────────────────────────────┐
+│  GLOBAL MONITORING NETWORK      │
+│  ├─ GPS Tracking (15K Units)    │
+│  ├─ Weather Data Integration    │
+│  ├─ Traffic Pattern Analysis    │
+│  └─ Vendor Status Monitoring    │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  AUTONOMOUS ORCHESTRATOR        │
+│  ├─ Route Optimization          │
+│  ├─ Inventory Predictions       │
+│  ├─ Vendor Coordination         │
+│  └─ Risk Assessment             │
+└─────────────────────────────────┘
+           │
+           ▼
+┌─────────────────────────────────┐
+│  EXECUTION PROTOCOLS            │
+│  ├─ Dynamic Routing             │
+│  ├─ Inventory Reorders          │
+│  └─ Delivery Scheduling         │
+└─────────────────────────────────┘
+
+ACTIVE SHIPMENTS: 15,000/DAY
+COUNTRIES COVERED: 47
+DELIVERY ACCURACY: 99.2%
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-results">
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-icon">🎯</div>
+                            <div class="result-title">PERFECT TIMING</div>
+                            <div class="result-description">99.2% on-time delivery achievement</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">💰</div>
+                            <div class="result-title">MASSIVE SAVINGS</div>
+                            <div class="result-description">89% reduction in operational costs</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">🌍</div>
+                            <div class="result-title">GLOBAL SCALE</div>
+                            <div class="result-description">47 countries synchronized seamlessly</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">⚡</div>
+                            <div class="result-title">REAL-TIME OPTIMIZATION</div>
+                            <div class="result-description">Routes adjusted every 3.7 minutes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <div class="testimonial-container">
+            <h2 class="testimonial-title">CLIENT TESTIMONIALS</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        SEMTEX's autonomous systems have revolutionized our manufacturing operations. We've achieved levels of efficiency we never thought possible. The system literally thinks ahead of problems.
+                    </div>
+                    <div class="testimonial-author">SARAH MARTINEZ</div>
+                    <div class="testimonial-company">CTO, TITAN MANUFACTURING</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The trading algorithms generated a 2847% ROI increase in our first quarter. The speed and accuracy are beyond human capability. This is the future of financial services.
+                    </div>
+                    <div class="testimonial-author">MICHAEL CHEN</div>
+                    <div class="testimonial-company">CEO, QUANTUM FINANCIAL</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Our global logistics network now operates like a perfectly synchronized machine. 99.2% on-time delivery across 47 countries is something we couldn't achieve with human coordination alone.
+                    </div>
+                    <div class="testimonial-author">ALEXANDRA PETROV</div>
+                    <div class="testimonial-company">COO, GLOBAL LOGISTICS DYNAMICS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>NETWORK ACCESS</h4>
+                <p>contact@semtex.tech</p>
+                <p>011-1SE-MTEX</p>
+                <p>ENCRYPTED CHANNELS ONLY</p>
+            </div>
+            <div class="footer-section">
+                <h4>CORE SERVICES</h4>
+                <a href="services.html">NEURAL INTEGRATION</a>
+                <a href="services.html">PROCESS AUTOMATION</a>
+                <a href="services.html">SAAS ARCHITECTURE</a>
+                <a href="services.html">SECURITY PROTOCOLS</a>
+            </div>
+            <div class="footer-section">
+                <h4>ENTERPRISE</h4>
+                <a href="about.html">CORPORATE OVERVIEW</a>
+                <a href="case-studies.html">CASE STUDIES</a>
+                <a href="contact.html">TALENT ACQUISITION</a>
+                <a href="contact.html">PARTNERSHIP PROTOCOLS</a>
+            </div>
+            <div class="footer-section">
+                <h4>DOCUMENTATION</h4>
+                <a href="contact.html">API REFERENCE</a>
+                <a href="contact.html">TECHNICAL SPECS</a>
+                <a href="contact.html">SECURITY COMPLIANCE</a>
+                <a href="contact.html">SYSTEM STATUS</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 SEMTEX TECHNOLOGIES :: ALL NEURAL NETWORKS RESERVED :: CLASSIFIED LEVEL OMEGA</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Case Study Filters
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const caseStudies = document.querySelectorAll('.case-study-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    const filter = btn.dataset.filter;
+
+                    caseStudies.forEach(study => {
+                        if (filter === 'all' || study.dataset.category === filter) {
+                            study.style.display = 'block';
+                        } else {
+                            study.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
